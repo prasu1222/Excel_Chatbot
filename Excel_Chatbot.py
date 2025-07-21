@@ -21,7 +21,7 @@ def preprocess_and_save(uploaded_file):
         
         if file_extension == '.csv':
             # Read CSV
-            df = pd.read_csv(uploaded_file)
+            df = pd.read_csv(uploaded_file,encoding='utf-8')
         elif file_extension == '.xlsx':
             # Read Excel
             df = pd.read_excel(uploaded_file)
@@ -31,7 +31,7 @@ def preprocess_and_save(uploaded_file):
         
         # Save cleaned DataFrame to a temporary CSV
         temp_path = os.path.join(os.getcwd(), "uploaded_data.csv")
-        df.to_csv(temp_path, index=False)
+        df.to_csv(temp_path, index=False, encoding='utf-8')
 
         return temp_path, df
     
